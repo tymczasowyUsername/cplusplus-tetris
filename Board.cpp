@@ -15,18 +15,6 @@ int Cell::getValue() const
 {
 	return value;
 }
-
-// Auxiliary function for debugging
-juce::String toString (const juce::Array<juce::Point<int>>& points)
-{
-    juce::String result = "{ ";
-    
-    for (const auto& p : points)
-            result << "(" << p.toString() << ") ";
-
-    result << "}";
-    return result;
-}
 //==============================================================================
 
 // Creates Block and assign point values to it form generatedPoints array, sets value to 1 (O-shape Block)
@@ -114,7 +102,6 @@ juce::Array<juce::Point<int>> Board::Block::getRotateXYs (Direction dir)
         dist.add ( { elem.getReference (i).getX() - elem.getReference (1).getX()
                    , elem.getReference (i).getY() - elem.getReference (1).getY()  } );
     };
-        DBG ("dist = " + toString (dist));
 
     if (dir == Direction::up)
     {
@@ -130,7 +117,6 @@ juce::Array<juce::Point<int>> Board::Block::getRotateXYs (Direction dir)
                        , elem.getReference (1).getY() - dist.getReference (i).getX() } );
     }
 
-    DBG ("test = " + toString (test));
 
     return test;
 }
